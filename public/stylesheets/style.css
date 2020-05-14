@@ -1,3 +1,4 @@
+  margin-top: 10px;
 body {
   font-family: 'Noto Sans TC', sans-serif;
 }
@@ -63,6 +64,7 @@ header {
 
 .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
 }
 .card:hover {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
@@ -77,12 +79,53 @@ header {
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-
+div.card-body {
+  padding: 0;
+}
+.restaurant-info {
+  padding: 0.7rem;
+}
 .restaurant-category {
   color: #666666;
   font-size: 0.8rem;
 }
+.rating {
+  background-color: #015f5a;
+  color: #fff;
+}
+.crud>form {
+  display: inline-block;
+  padding: 0;
+}
 
+.crud {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.a-button, .f-button {
+  flex-grow: 1;
+}
+
+.crud-button {
+  display: inline-block;
+  padding: 5px;
+  background-color: #fff;
+  border: none;
+  color: #808080;
+  text-align: center;
+}
+
+a.crud-button:hover, .crud-button:hover  {
+  text-decoration: none;
+  color: black;
+  background-color: #f5f5f5;
+}
+
+
+
+//show page
 .restaurant-show-title {
   position: relative;
   top: -100px;
@@ -101,13 +144,9 @@ header {
   margin: 20px 0;
   padding: 5px 0px 5px 15px;
 }
-.rating {
-  background-color: #015f5a;
-  color: #fff;
-}
+
 
 @media screen and (max-width: 992px) {
-  
   .card img{
     height: 115px;
   }
@@ -121,7 +160,6 @@ header {
 }
 
 @media screen and (max-width: 575px) {
-  
   .card img{
     height: auto;
   }
