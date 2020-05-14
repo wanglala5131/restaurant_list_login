@@ -26,6 +26,13 @@ app.get('/', (req, res) => {
     .then(restaurants => res.render('index', { restaurants }))
     .catch(err => console.log(err))
 })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(err => console.log(err))
+})
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
