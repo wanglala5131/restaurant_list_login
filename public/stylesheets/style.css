@@ -1,0 +1,129 @@
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+header {
+  overflow: hidden;
+}
+
+.navbar .navbar-brand {
+  letter-spacing: 1px;
+  color: #fdfff4;
+  font-size: 23px;
+}
+.nav-img {
+  margin: 0 5px 5px 0;
+}
+
+.navbar .navbar-brand:hover {
+  color: #add8e6;
+}
+
+.banner {
+  position: relative;
+  z-index: -1;
+  margin: -5px;
+  height: 360px;
+  background: #dddddd center center url('https://p2.piqsels.com/preview/50/153/191/beach-champagne-cheerful-cheers.jpg');
+  background-size: cover;
+  filter: blur(1px);
+}
+
+.search-bar .search-bar-outer {
+  position: relative;
+  margin: 0 auto;
+  max-width: 680px;
+  border-radius: 8px;
+  padding: 20px 30px;
+  border: 0;
+  margin-top: -60px;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar .search-bar-inner h4 {
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.form-control::placeholder {
+  color: #aaaaaa;
+  font-size: 0.8rem;
+}
+
+.btn-major {
+  background-color: #07817a;
+  color: white;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.card {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card img{
+  height: 180px;
+}
+
+.card-title{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.restaurant-category {
+  color: #666666;
+  font-size: 0.8rem;
+}
+
+.restaurant-show-title {
+  position: relative;
+  top: -100px;
+  color: white;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.info {
+  margin-top: -30px;
+}
+
+.description {
+  border-left: 5px solid rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  padding: 5px 0px 5px 15px;
+}
+.rating {
+  background-color: #015f5a;
+  color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+  
+  .card img{
+    height: 115px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .restaurant-show-title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  
+  .card img{
+    height: auto;
+  }
+  
+}
