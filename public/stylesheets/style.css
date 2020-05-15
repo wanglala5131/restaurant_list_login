@@ -17,6 +17,21 @@ header {
 .navbar .navbar-brand:hover {
   color: #add8e6;
 }
+.add-button {
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 5px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.8);
+}
+a.add-button:hover {
+  background-color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.9);
+}
+.fa-plus-square {
+  margin-right: 5px;
+}
 
 .banner {
   position: relative;
@@ -143,6 +158,46 @@ a.crud-button:hover, .crud-button:hover {
 }
 a:hover {
   text-decoration: none;
+}
+/*create and edit page*/
+.enter-info {
+  max-width: 700px;
+  margin-top: 20px;
+  padding: 20px 30px;
+  border: 1px solid #696969; 
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: #343a40;
+  color: #dcdcdc;
+}
+.enter-info>.row>div {
+  padding: 15px;
+}
+.enter-info p {
+  margin: 0;
+}
+.enter-info input, .enter-info textarea {
+  padding: 5px;
+  margin-top: 5px;
+}
+.enter-info input::placeholder, .enter-info textarea::placeholder {
+  color: #c0c0c0;
+}
+.enter-info textarea {
+  height: 100px;
+}
+.enter-info button {
+  margin: 5px auto;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border:1.5px solid #696969;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+  color: #696969;
+}
+.enter-info button:hover {
+  background-color: #696969;
+  color: #fff;
 }
 
 

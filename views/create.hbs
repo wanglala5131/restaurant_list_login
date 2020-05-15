@@ -1,0 +1,44 @@
+<div class="container d-flex justify-content-center">
+  <form class="enter-info" action="/restaurant/create" method="POST">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <p>餐廳名稱：</p>
+        <input class="w-100" type="text" placeholder="e.g.弎樓" name="name" required="required">
+      </div>
+      <div class="col-sm-6 col-12">
+        <p>餐廳英文名(選填)：</p>
+        <input class="w-100" type="text" placeholder="e.g.Three Floor" name="name_en">
+      </div>
+      <div class="col-sm-6 col-12">
+        <p>類型：</p>
+        <input class="w-100" type="text" placeholder="e.g.酒吧、台式料理" name="category" required="required">
+      </div>
+      <div class="col-sm-6 col-12">
+        <p>聯絡電話(選填)：</p>
+        <input class="w-100" type="text" placeholder="09-XXX-XXX、02-XXXXXX" name="phone">
+      </div>
+      <div class="col-12">
+        <p>相關圖片網址：</p>
+        <input class="w-100" type="text" placeholder="https://.." name="image">
+      </div>
+      <div class="col-sm-6">
+        <p>地址：</p>
+        <input class="w-100" class="w-100" type="text" placeholder="台北市中正區..." name="location" required="required">
+      </div>
+      <div class="col-sm-6 col-12">
+        <p>GOOGLE 評分：</p>
+        <input class="w-100" type="text" placeholder="e.g. 4.2" name="rating" required="required">
+      </div>
+      <div class="col-12">
+        <p>GOOGLE-MAP 網址：</p>
+        <input class="w-100" type="text" placeholder="https://goo.gl/maps/..." name="google_map" required="required">
+      </div>
+      <div class="col-12">
+        <p>描述：</p>
+        <textarea class="w-100" placeholder="請輸入相關描述，例如：酒吧結合台式熱炒料理，每道菜都有不同於其他間店的風味，麻婆豆腐特別獨特好吃！" name="description"
+          required="required"></textarea>
+      </div>
+      <button type="submit">新增</button>
+    </div>
+  </form>
+</div>
