@@ -23,7 +23,7 @@
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
-        <a href="/restaurant/{{this._id}}" class="text-secondary">
+        <a href="/restaurant/detail/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body">
@@ -38,10 +38,10 @@
                 </span>
               </div>
               <div class="crud">
-                <a class="crud-button a-button" href="/restaurant/{{this._id}}/edit">Edit</a>
-                <a class="crud-button a-button" href="/restaurant/{{this._id}}">Detail</a>
-                <form action="" class="f-button">
-                  <button class="crud-button col-12">Delete</button>
+                <a class="crud-button a-button" href="/restaurant/{{this._id}}/edit">編輯</a>
+                <!--<a class="crud-button a-button" href="/restaurant/detail/{{this._id}}">資訊</a>-->
+                <form action="/restaurant/delete/{{this._id}}" class="f-button" method="POST">
+                  <button type="submit" class="crud-button col-12">刪除</button>
                 </form>
               </div>
             </div>

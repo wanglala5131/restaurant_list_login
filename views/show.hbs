@@ -1,7 +1,14 @@
 <div class="banner"></div>
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<div class="detail-crud">
+  <a class="crud-button" href="/restaurant/{{restaurant._id}}/edit">編輯</a>
+  <form action="/restaurant/delete/{{restaurant._id}}" method="POST">
+    <button type="submit" class="crud-button col-12">刪除</button>
+  </form>
+</div>
 <div class="container">
   <div class="row">
+
     <div class="col-12 col-md-10 mx-auto">
 
       <p class="mb-1">

@@ -30,17 +30,18 @@ app.get('/', (req, res) => {
     .catch(err => console.log(err))
 })
 //詳細頁
-app.get('/restaurant/:id', (req, res) => {
+app.get('/restaurant/detail/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(err => console.log(err))
 })
-app.get('/create', (req, res) => {
+
+//新增店家資料
+app.get('/restaurant/create', (req, res) => {
   res.render('create')
 })
-
 app.post('/restaurant/create', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
   if (image.length === 0) {
@@ -51,6 +52,7 @@ app.post('/restaurant/create', (req, res) => {
     .catch(err => console.log(err))
 })
 
+//編輯店家資料
 app.get('/restaurant/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -64,7 +66,6 @@ app.post('/restaurant/:id/edit', (req, res) => {
   if (image.length === 0) {
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/640px-No_image_3x4.svg.png'
   }
-
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
@@ -79,6 +80,16 @@ app.post('/restaurant/:id/edit', (req, res) => {
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurant/${id}/edit`))
+    .catch(err => console.log(err))
+})
+
+//刪除店家資料
+app.post('/restaurant/delete/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 

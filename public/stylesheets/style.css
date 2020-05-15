@@ -4,7 +4,9 @@ body {
 header {
   overflow: hidden;
 }
-
+.navbar {
+  border-bottom: 1px solid #808080;
+}
 .navbar .navbar-brand {
   letter-spacing: 1px;
   color: #fdfff4;
@@ -29,7 +31,7 @@ a.add-button:hover {
   background-color: rgba(255,255,255,0.8);
   color: rgba(0,0,0,0.9);
 }
-.fa-plus-square {
+.fa-plus {
   margin-right: 5px;
 }
 
@@ -138,6 +140,34 @@ a.crud-button:hover, .crud-button:hover {
 }
 
 /*show page*/
+.detail-crud>form {
+  display: inline-block;
+  padding: 0;
+}
+
+.detail-crud {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.detail-crud .crud-button {
+  display: inline-block;
+  width: 100px;
+  margin:0 10px;
+  box-shadow: 0 0 1px 2px rgba(0,0,0,0.4);
+  border-radius: 50px;
+  color: #808080;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.detail-crud a.crud-button:hover, .detail-crud .crud-button:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  background-color: #696969;
+}
 .restaurant-show-title {
   position: relative;
   top: -100px;
@@ -162,7 +192,7 @@ a:hover {
 /*create and edit page*/
 .enter-info {
   max-width: 700px;
-  margin-top: 20px;
+  margin: 70px 0 30px 0;
   padding: 20px 30px;
   border: 1px solid #696969; 
   border-radius: 5px;
@@ -186,7 +216,7 @@ a:hover {
 .enter-info textarea {
   height: 100px;
 }
-.enter-info button {
+.enter-info button, a.info-button {
   margin: 5px auto;
   padding: 8px 16px;
   border-radius: 5px;
@@ -194,10 +224,11 @@ a:hover {
   letter-spacing: 2px;
   font-size: 1.1rem;
   color: #696969;
+  color: white;
+  background-color: transparent;
 }
-.enter-info button:hover {
+.enter-info button:hover, a.info-button:hover {
   background-color: #696969;
-  color: #fff;
 }
 
 
