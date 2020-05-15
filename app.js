@@ -28,15 +28,16 @@ app.get('/', (req, res) => {
     .then(restaurants => res.render('index', { restaurants }))
     .catch(err => console.log(err))
 })
-app.get('/restaurants/:id', (req, res) => {
+app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(err => console.log(err))
 })
-app.get('/restaurant/create', (req, res) => {
-  res.render('create')
+
+app.get('/restaurant/new', (req, res) => {
+  res.send('11')
 })
 app.post('/restaurant/create', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
@@ -45,6 +46,37 @@ app.post('/restaurant/create', (req, res) => {
   }
   return Restaurant.create({ name, name_en, category, phone, image, location, rating, google_map, description })
     .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
+app.get('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(err => console.log(err))
+})
+app.post('/restaurant/:id/edit', (req, res) => {
+  let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
+  const id = req.params.id
+  if (image.length === 0) {
+    image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/640px-No_image_3x4.svg.png'
+  }
+
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.name_en = name_en
+      restaurant.category = category
+      restaurant.phone = phone
+      restaurant.image = image
+      restaurant.location = location
+      restaurant.rating = rating
+      restaurant.google_map = google_map
+      restaurant.description = description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurant/${id}/edit`))
     .catch(err => console.log(err))
 })
 
