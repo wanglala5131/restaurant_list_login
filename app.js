@@ -86,10 +86,25 @@ app.post('/restaurant/:id/edit', (req, res) => {
 //刪除店家資料
 app.post('/restaurant/delete/:id', (req, res) => {
   const id = req.params.id
-  console.log(id)
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
+//搜尋
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  Restaurant.find()
+    .lean()
+    .then(restaurants => {
+      return restaurants.filter(restaurant =>
+        restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+        || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
+        || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+      )
+    })
+    .then(restaurants => res.render('index', { restaurants, keyword: keyword }))
     .catch(err => console.log(err))
 })
 
