@@ -22,12 +22,14 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//首頁
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
     .catch(err => console.log(err))
 })
+//詳細頁
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -35,10 +37,10 @@ app.get('/restaurant/:id', (req, res) => {
     .then(restaurant => res.render('show', { restaurant }))
     .catch(err => console.log(err))
 })
-
-app.get('/restaurant/new', (req, res) => {
-  res.send('11')
+app.get('/create', (req, res) => {
+  res.render('create')
 })
+
 app.post('/restaurant/create', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
   if (image.length === 0) {
