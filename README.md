@@ -13,7 +13,7 @@
 
 ## 安裝與使用
 #### 下載專案
-    git clone https://github.com/wanglala5131/restaurant-list-with-mongodb.git
+    git clone https://github.com/wanglala5131/Restaurant-list-refactor.git
 #### 安裝package
     npm install
 #### 新增種子資料
