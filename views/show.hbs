@@ -3,7 +3,7 @@
 <div class="detail-crud">
   <a class="crud-button" href="/">回餐廳清單</a>
   <a class="crud-button" href="/restaurant/{{restaurant._id}}/edit">編輯</a>
-  <form action="/restaurant/delete/{{restaurant._id}}" method="POST">
+  <form action="/restaurant/{{restaurant._id}}?_method=DELETE" method="POST">
     <button type="submit" class="crud-button col-12">刪除</button>
   </form>
 </div>

@@ -2,6 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
 const Restaurant = require('./models/restaurants.js')
 const app = express()
 const port = 3000
@@ -21,6 +23,7 @@ app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 //首頁
 app.get('/', (req, res) => {
@@ -60,7 +63,7 @@ app.get('/restaurant/:id/edit', (req, res) => {
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(err => console.log(err))
 })
-app.post('/restaurant/:id/edit', (req, res) => {
+app.put('/restaurant/:id', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
   const id = req.params.id
   if (image.length === 0) {
@@ -84,7 +87,7 @@ app.post('/restaurant/:id/edit', (req, res) => {
 })
 
 //刪除店家資料
-app.post('/restaurant/delete/:id', (req, res) => {
+app.delete('/restaurant/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
