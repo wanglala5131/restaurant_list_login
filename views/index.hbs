@@ -19,6 +19,23 @@
 
 <!-- restaurant list -->
 <div class="container mt-5">
+  <div class="row d-flex justify-content-end mb-4">
+    <div class="dropdown">
+      <span style="font-size: 1.2rem;">排列方式：</span>
+      <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        {{#if currentSelected}} {{currentSelected}} {{/if}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/sort/name/asc">店名：正序</a>
+        <a class="dropdown-item" href="/sort/name/desc">店名：反序</a>
+        <a class="dropdown-item" href="/sort/category/asc">類別：正序</a>
+        <a class="dropdown-item" href="/sort/category/desc">類別：反序</a>
+        <a class="dropdown-item" href="/sort/rating/descending">評分：由高至低</a>
+        <a class="dropdown-item" href="/sort/rating/ascending">評分：由低至高</a>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
