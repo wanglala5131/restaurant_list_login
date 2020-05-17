@@ -18,7 +18,7 @@ router.get('/create', (req, res) => {
 })
 router.post('/', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
-  if (image.length === 0) {
+  if (!image.length) {
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/640px-No_image_3x4.svg.png'
   }
   return Restaurant.create({ name, name_en, category, phone, image, location, rating, google_map, description })
@@ -37,7 +37,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
   const id = req.params.id
-  if (image.length === 0) {
+  if (!image.length) {
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/640px-No_image_3x4.svg.png'
   }
   return Restaurant.findById(id)
@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
       restaurant.description = description
       return restaurant.save()
     })
-    .then(() => res.redirect(`/restaurant/${id}/edit`))
+    .then(() => res.redirect(`/restaurant/detail/${id}`))
     .catch(err => console.log(err))
 })
 

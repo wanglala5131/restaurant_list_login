@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         || restaurant.category.toLowerCase().includes(keyword)
       )
     })
-    .then(restaurants => res.render('index', { restaurants, keyword: keyword }))
+    .then(restaurants => res.render('index', { restaurants, keyword }))
     .catch(err => console.log(err))
 })
 

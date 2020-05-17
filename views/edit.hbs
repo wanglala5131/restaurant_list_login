@@ -30,8 +30,8 @@
       </div>
       <div class="col-sm-6 col-12">
         <p>GOOGLE 評分： (請輸入 0 - 10 )</p>
-        <input class="w-100" type="number" placeholder="e.g. 4.2" min="0" max="10" name="rating" required="required"
-          value="{{restaurant.rating}}">
+        <input class="w-100" type="number" placeholder="e.g. 4.2" min="0" max="10" name="rating" step="0.1"
+          required="required" value="{{restaurant.rating}}">
       </div>
       <div class="col-12">
         <p>GOOGLE-MAP 網址：</p>
@@ -44,8 +44,7 @@
           required="required">{{restaurant.description}}</textarea>
       </div>
       <a href="/" class="info-button">回首頁</a>
-      <a href="/restaurant/detail/{{restaurant._id}}" class="info-button">店家頁面</a>
-      <button type="submit">儲存</button>
+      <button type="submit">儲存並回店家頁面</button>
     </div>
   </form>
 </div>
