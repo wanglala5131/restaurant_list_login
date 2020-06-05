@@ -237,6 +237,33 @@ a:hover {
   background-color: #696969;
 }
 
+/*login and register*/
+.user-part {
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+}
+.user-part .card {
+  padding: 10px 50px;
+  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  border: none;
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
+.user-part .btn-local {
+  background-color:#477066;
+  color: white;
+  margin-top: 30px;
+}
+.user-part .btn:hover {
+  background-color:#2f4f4f;
+}
+.user-part .btn-facebook {
+  background-color: #0d33ff;
+  color: white;
+}
+.user-part .btn-facebook:hover {
+  background-color: #111f6a;
+}
 
 @media screen and (max-width: 992px) {
   .card img{
