@@ -23,7 +23,9 @@
             width="30" height="30" class="d-inline-block nav-img" alt="好。吃">
           我的餐廳清單
         </a>
+        {{#if isAuthenticated}}
         <a href="/users/logout" class="logout-button">登出</a>
+        {{/if}}
       </div>
     </nav>
 
