@@ -21,7 +21,6 @@ router.post('/register', (req, res) => {
   User.findOne({ email })
     .then(user => {
       if (user) {
-        console.log('已存在')
         return res.render('register', { name, email, password, confirmPassword })
       } else {
         return bcrypt

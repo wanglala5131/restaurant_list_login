@@ -19,17 +19,30 @@ header {
 .navbar .navbar-brand:hover {
   color: #add8e6;
 }
-.add-button {
-  padding: 5px;
-  border: 1px solid rgba(255,255,255,0.8);
+.logout-button {
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,0.7);
   border-radius: 5px;
   font-size: 18px;
   letter-spacing: 1px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.7);
+}
+.logout-button:hover {
+  background-color: rgba(255,255,255,0.7);
+  color: rgba(0, 0, 0, 0.7)
+}
+.add-button {
+  padding: 5px 10px;
+  border: 1px solid #343a40;
+  background-color: #343a40;
+  border-radius: 5px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #fff;
 }
 a.add-button:hover {
-  background-color: rgba(255,255,255,0.8);
-  color: rgba(0,0,0,0.9);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  color: #d9e7ba;
 }
 .fa-plus {
   margin-right: 5px;
@@ -245,24 +258,26 @@ a:hover {
 }
 .user-part .card {
   padding: 10px 50px;
-  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
-  border: none;
+  background-color: #CDDCDC;
+  background-image: radial-gradient(at 50% 100%, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.25) 100%);
+  background-blend-mode: screen, overlay;
+  border: 2px solid rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 }
 .user-part .btn-local {
-  background-color:#477066;
+  background-color:#2e8b57;
   color: white;
   margin-top: 30px;
 }
 .user-part .btn:hover {
-  background-color:#2f4f4f;
+  background-color:#028255;
 }
 .user-part .btn-facebook {
   background-color: #0d33ff;
   color: white;
 }
 .user-part .btn-facebook:hover {
-  background-color: #111f6a;
+  background-color: #2a52be;
 }
 
 @media screen and (max-width: 992px) {
