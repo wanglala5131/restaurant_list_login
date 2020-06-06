@@ -19,10 +19,12 @@ router.get('/register', (req, res) => {
 })
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
-  const regex = /[0-9][a-z]/i    //需至少含1個數字和1個不限大小寫的字母
+  //原本想限定在1個字母1個數字，但看到userSeeder的條件就改了XD
+  //const regex = /[0-9][a-z]/i    //需至少含1個數字和1個不限大小寫的字母
+  const regex = /[0-9]/i    //需至少含1個數字
   const errors = []
   if (!regex.test(password)) {
-    errors.push({ message: '密碼請至少包含一個字母(不限大小)和一個數字' })
+    errors.push({ message: '密碼請至少包含一個數字' })
   }
   if (password !== confirmPassword) {
     errors.push({ message: '兩次輸入的密碼不一致' })
