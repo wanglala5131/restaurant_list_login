@@ -5,14 +5,15 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
 
+if (process.env.NODE_ENV !== 'production') {   //要在mongodb、route、session前面
+  require('dotenv').config()
+}
 const usePassprt = require('./config/passport')
 require('./config/mongoose')
 const routes = require('./routes')
 const app = express()
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
+
 const port = process.env.PORT
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
