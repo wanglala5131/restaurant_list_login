@@ -23,37 +23,53 @@ const users = [
 
 
 db.once('open', () => {
-
-  for (let x = 0; x < users.length; x++) {
-    //還必須加上檢查是否加過
-
-    const filterRestaurant = restaurantList.filter(restaurant => restaurant.owner === users[x].name)
-    bcrypt
-      .genSalt(10)
-      .then(salt => bcrypt.hash(users[x].password, salt))
-      .then(hash => User.create({
-        name: users[x].name,
-        email: users[x].email,
-        password: hash
-      }))
-      .then(user => {
-        const userId = user._id
-        for (let i = 0; i < filterRestaurant.length; i++) {
-          Restaurant.create({
-            name: filterRestaurant[i].name,
-            name_en: filterRestaurant[i].name_en,
-            category: filterRestaurant[i].category,
-            image: filterRestaurant[i].image,
-            location: filterRestaurant[i].location,
-            phone: filterRestaurant[i].phone,
-            google_map: filterRestaurant[i].google_map,
-            rating: filterRestaurant[i].rating,
-            description: filterRestaurant[i].description,
-            userId
-          })
-        }
-      })
+  //seed存成function
+  function seeder(users, restaurantList) {
+    users.map(user => {
+      const { name, email, password } = user
+      User.findOne({ email })
+        .then(user => {
+          //檢查是否存在
+          if (user) { return console.log(`${email}已經存在`) }
+          const filterRestaurant = restaurantList.filter(restaurant => restaurant.owner === email)
+          //不存在就繼續
+          return bcrypt
+            .genSalt(10)
+            .then(salt => bcrypt.hash(password, salt))
+            .then(hashPassword => User.create({
+              name,
+              email,
+              password: hashPassword
+            }))
+            .then(user => {
+              const userId = user._id
+              filterRestaurant.map(restaurant => {
+                const { name, name_en, category, image, location, phone, google_map, rating, description } = restaurant
+                Restaurant.create({
+                  name,
+                  name_en,
+                  category,
+                  image,
+                  location,
+                  phone,
+                  google_map,
+                  rating,
+                  description,
+                  userId
+                })
+              })
+            })
+        })
+        .catch(err => console.log(err))
+    })
   }
-  console.log('create seed!!')
-  //想不出怎麼使用promise.all QQ
+  //下面的程式雖然跑得出seed
+  //但做不出promise.all和process.exit()
+  return Promise.all(seeder(users, restaurantList))
+    .then(() => {
+      console.log('create seed!!')
+      process.exit()
+    })
+    .catch(err => console.log(err))
+
 })
