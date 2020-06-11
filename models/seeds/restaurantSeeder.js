@@ -24,7 +24,7 @@ const users = [
 
 db.once('open', () => {
   //seed存成function
-  function seeder(users, restaurantList) {
+  let seeder = new Promise((resolve, reject) => {
     users.map(user => {
       const { name, email, password } = user
       User.findOne({ email })
@@ -33,7 +33,7 @@ db.once('open', () => {
           if (user) { return console.log(`${email}已經存在`) }
           const filterRestaurant = restaurantList.filter(restaurant => restaurant.owner === email)
           //不存在就繼續
-          return bcrypt
+          bcrypt
             .genSalt(10)
             .then(salt => bcrypt.hash(password, salt))
             .then(hashPassword => User.create({
@@ -45,7 +45,7 @@ db.once('open', () => {
               const userId = user._id
               filterRestaurant.map(restaurant => {
                 const { name, name_en, category, image, location, phone, google_map, rating, description } = restaurant
-                Restaurant.create({
+                resolve(Restaurant.create({
                   name,
                   name_en,
                   category,
@@ -56,19 +56,23 @@ db.once('open', () => {
                   rating,
                   description,
                   userId
-                })
+                }))
               })
             })
+            .catch(err => reject(err))
         })
         .catch(err => console.log(err))
     })
-  }
-  //下面的程式雖然跑得出seed
-  //但做不出promise.all和process.exit()
-  return Promise.all(seeder(users, restaurantList))
+  })
+
+
+  //如果沒加setTimeout，最後一個restaurant跑不出來...QQ
+  seeder
     .then(() => {
       console.log('create seed!!')
-      process.exit()
+      setTimeout(() => {
+        process.exit()
+      }, 0)
     })
     .catch(err => console.log(err))
 
